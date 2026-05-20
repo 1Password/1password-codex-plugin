@@ -1,6 +1,6 @@
 # 1Password Codex Plugin
 
-This local plugin connects Codex to the 1Password desktop app's local MCP server for 1Password Developer Environments.
+This plugin connects Codex to the 1Password desktop app's local MCP server for 1Password Developer Environments.
 
 ## MCP Server
 
@@ -30,8 +30,8 @@ The MCP server requires the 1Password desktop app with the Labs MCP server exper
 - `create_local_env_file`
 - `list_local_env_files`
 
-## Documentation Checked
+## Documentation
 
 - https://www.1password.dev/environments
 - https://www.1password.dev/environments/local-env-file
-- MCP resources exposed by the local server: `1password://docs/getting-started` and `1password://docs/environments-guide`
+- https://www.1password.dev/environments/mcp-codex-server

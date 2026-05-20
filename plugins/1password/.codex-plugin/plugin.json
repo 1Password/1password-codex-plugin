@@ -5,8 +5,8 @@
   "author": {
     "name": "1Password"
   },
-  "homepage": "https://www.1password.dev/environments",
-  "repository": "https://github.com/1Password",
+  "homepage": "https://www.1password.dev/environments/mcp-codex-server",
+  "repository": "https://github.com/1Password/1password-codex-plugin",
   "license": "MIT",
   "keywords": [
     "1password",
