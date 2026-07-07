@@ -104,4 +104,4 @@ No resource templates are currently exposed.
 
 ## Notes
 
-The local MCP server is enabled from 1Password Labs in the desktop app and connects through the bundled `onepassword-mcp` binary. Local `.env` mounts are supported on macOS and Linux.
+The local MCP server is enabled from 1Password Labs in the desktop app and connects through the `1password-mcp` alias installed on your `PATH`, which is supported on macOS, Windows, and Linux. Local `.env` mounts are supported on macOS and Linux.
