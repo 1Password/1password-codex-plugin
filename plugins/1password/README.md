@@ -4,13 +4,15 @@ This plugin connects Codex to the 1Password desktop app's local MCP server for 1
 
 ## MCP Server
 
-The plugin starts the bundled macOS binary:
+The plugin starts the 1Password MCP server via the `1password-mcp` alias, which
+the 1Password desktop app installs on your `PATH` (supported on macOS, Windows,
+and Linux):
 
 ```json
 {
   "mcpServers": {
     "1password": {
-      "command": "/Applications/1Password.app/Contents/MacOS/onepassword-mcp",
+      "command": "1password-mcp",
       "args": []
     }
   }

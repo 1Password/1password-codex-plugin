@@ -8,7 +8,7 @@ listing Developer Environments, inspecting variable names, adding variables, and
 creating local `.env` mounts. Secret values remain controlled by 1Password and
 are never shared with Codex.
 
-Note: This plugin currently only supports MacOS
+Note: This plugin supports macOS, Windows, and Linux.
 
 #### Documentation
 https://www.1password.dev/environments/mcp-codex-server
@@ -18,7 +18,7 @@ https://www.1password.dev/environments/mcp-codex-server
 - `plugins/1password/.codex-plugin/plugin.json` - Codex plugin metadata and UI
   configuration.
 - `plugins/1password/.mcp.json` - MCP server configuration for the 1Password
-  desktop app's bundled `onepassword-mcp` binary.
+  desktop app's bundled `1password-mcp` binary.
 - `plugins/1password/skills/1password-environments/SKILL.md` - Codex skill
   instructions for using 1Password Developer Environments.
 - `plugins/1password/assets/` - Plugin icon and logo assets.
@@ -27,14 +27,15 @@ https://www.1password.dev/environments/mcp-codex-server
 
 ## Prerequisites
 
-- macOS with the 1Password desktop app installed.
+- macOS, Windows, or Linux with the 1Password desktop app installed.
 - 1Password Labs MCP server experiment enabled in the desktop app.
 - Access to a 1Password account with Developer Environments enabled.
 
-The MCP server is expected at:
+The MCP server runs via the `1password-mcp` alias, which the 1Password
+desktop app installs on your `PATH`:
 
 ```text
-/Applications/1Password.app/Contents/MacOS/onepassword-mcp
+1password-mcp
 ```
 
 ## Using the Plugin

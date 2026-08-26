@@ -1,6 +1,6 @@
 {
   "name": "1password",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Use the local 1Password MCP server to manage 1Password Developer Environments and local .env mounts from Codex.",
   "author": {
     "name": "1Password"
