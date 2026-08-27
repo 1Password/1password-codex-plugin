@@ -28,8 +28,10 @@ https://www.1password.dev/environments/mcp-codex-server
 ## Prerequisites
 
 - macOS, Windows, or Linux with the 1Password desktop app installed.
-- 1Password Labs MCP server experiment enabled in the desktop app.
-- Access to a 1Password account with Developer Environments enabled.
+- The MCP server enabled in the desktop app under Settings > Developer.
+- Access to a 1Password account with Developer Environments enabled. On
+  business accounts, an administrator must first enable the feature in the
+  "Sharing & Permissions" policies section of the admin dashboard.
 
 The MCP server runs via the `1password-mcp` alias, which the 1Password
 desktop app installs on your `PATH`:
