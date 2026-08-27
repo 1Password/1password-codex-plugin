@@ -3,8 +3,6 @@ name: 1password-environments
 description: Manage 1Password Developer Environments and local .env mounts through the local 1Password MCP server, without exposing secret values. Use when the user asks to set up environment variables for a repo, store or configure API keys and secrets in 1Password, mount or create a local .env file from 1Password, inspect 1Password Environment variable names, or work with the 1Password MCP server.
 license: MIT
 compatibility: Requires the 1Password desktop app (macOS, Windows, or Linux) with the MCP server enabled in Developer settings, and a client configured to run the local 1password-mcp MCP server. Local .env mounts are supported on macOS and Linux only.
-metadata:
-  author: 1Password
 ---
 
 # 1Password Environments
