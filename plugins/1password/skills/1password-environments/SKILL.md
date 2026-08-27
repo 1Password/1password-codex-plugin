@@ -1,11 +1,13 @@
 ---
 name: 1password-environments
-description: Use the local 1Password MCP server to work with secure project environment configuration, 1Password Developer Environments, environment variables, API keys, secrets, and local .env mounts. Use when the user asks to set up env vars for a repo, configure secrets, mount or create a local .env from 1Password, store API keys in 1Password, inspect 1Password Environment variable names, or work with the 1Password MCP server.
+description: Manage 1Password Developer Environments and local .env mounts through the local 1Password MCP server, without exposing secret values. Use when the user asks to set up environment variables for a repo, store or configure API keys and secrets in 1Password, mount or create a local .env file from 1Password, inspect 1Password Environment variable names, or work with the 1Password MCP server.
+license: MIT
+compatibility: Requires the 1Password desktop app (macOS, Windows, or Linux) with the MCP server enabled in Developer settings, and a client configured to run the local 1password-mcp MCP server. Local .env mounts are supported on macOS and Linux only.
 ---
 
 # 1Password Environments
 
-Use the 1Password MCP server for all 1Password Developer Environment work.
+Use the local 1Password MCP server for all environment variable configuration. Its tools return variable names, never secret values, so secrets stay in 1Password.
 
 ## Use When
 
@@ -16,25 +18,38 @@ Use the 1Password MCP server for all 1Password Developer Environment work.
 
 Do not use this skill for unrelated password-manager tasks, arbitrary local `.env` file parsing, or non-1Password secret stores unless the user asks to migrate that configuration into 1Password.
 
-## MCP Contents
+## Requirements
+
+This skill depends on the local 1Password MCP server. If its tools are not available in the current session, help the user finish setup instead of improvising:
+
+1. Install the 1Password desktop app and enable the MCP server in Settings > Developer. On business accounts, the setting is unavailable until an administrator enables the feature in the "Sharing & Permissions" policies section of the admin dashboard.
+2. The desktop app installs the `1password-mcp` alias on the `PATH` (supported on macOS, Windows, and Linux).
+3. Configure the client to launch `1password-mcp` as a local MCP server. For Codex, add this to `~/.codex/config.toml`:
+
+   ```toml
+   [mcp_servers.1password]
+   command = "1password-mcp"
+   ```
+
+The 1Password desktop app asks the user to approve each client connection, and environment access can require additional approval.
+
+## Tools
 
 The local server exposes these tools:
 
-- `authenticate`
-- `list_environments`
-- `create_environment`
-- `rename_environment`
-- `list_variables`
-- `append_variables`
-- `create_local_env_file`
-- `list_local_env_files`
+- `authenticate`: authenticate with the 1Password desktop app and return the account ID.
+- `list_environments`: list Developer Environments for an account.
+- `create_environment`: create a new Developer Environment.
+- `rename_environment`: rename an existing Developer Environment.
+- `list_variables`: list variable names in an Environment without returning values.
+- `append_variables`: add or update Environment variables.
+- `create_local_env_file`: mount an Environment as a local `.env` file on macOS or Linux.
+- `list_local_env_files`: list local `.env` mounts for an Environment.
 
-The local server also exposes documentation resources:
+It also exposes these documentation resources:
 
 - `1password://docs/getting-started`
 - `1password://docs/environments-guide`
-
-No resource templates are currently exposed.
 
 ## Workflow
 
@@ -76,22 +91,10 @@ No resource templates are currently exposed.
 5. When the active schema accepts structured variable objects, use `{ "name": "API_KEY", "value": "...", "concealed": true }` for secrets and `concealed: false` only for non-sensitive values such as URLs or feature flags.
 6. When the active schema exposes `variables` as `string[]`, do not send unsupported object fields. Use the string format required by that schema, and ask for clarification if the user's requested variable format is ambiguous.
 
-## Tools
-
-- `authenticate`: authenticate with the 1Password desktop app and return the account ID.
-- `list_environments`: list Developer Environments for an account.
-- `create_environment`: create a new Developer Environment.
-- `rename_environment`: rename an existing Developer Environment.
-- `list_variables`: list variable names in an Environment without returning values.
-- `append_variables`: add or update Environment variables.
-- `create_local_env_file`: mount an Environment as a local `.env` file on macOS or Linux.
-- `list_local_env_files`: list local `.env` mounts for an Environment.
-
 ## Error Handling
 
 - If authentication or environment access fails, tell the user the 1Password desktop app may need approval, unlocking, or account access.
-- If the MCP server is unavailable, tell the user to enable the 1Password Labs MCP Server experiment in the desktop app. The server docs mention the Labs deep link `onepassword://settings/labs`.
-- If the Labs setting is missing, the account may not have the required `ai-local-mcp-server` feature flag.
+- If the MCP tools are unavailable, follow the Requirements section above to help the user enable and configure the local MCP server.
 - Local `.env` mounts are documented for macOS and Linux only.
 
 ## Safety
@@ -104,4 +107,5 @@ No resource templates are currently exposed.
 
 ## Notes
 
-The local MCP server is enabled from 1Password Labs in the desktop app and connects through the `1password-mcp` alias installed on your `PATH`, which is supported on macOS, Windows, and Linux. Local `.env` mounts are supported on macOS and Linux.
+- Official docs: https://www.1password.dev/environments and https://www.1password.dev/environments/mcp-codex-server
+- This skill is also distributed as part of the 1Password Codex plugin (https://github.com/1Password/1password-codex-plugin), which configures the MCP server automatically.
