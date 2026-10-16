@@ -2,7 +2,7 @@
 name: 1password-environments
 description: Manage 1Password Developer Environments and local .env mounts through the local 1Password MCP server, without exposing secret values. Use when the user asks to set up environment variables for a repo, store or configure API keys and secrets in 1Password, mount or create a local .env file from 1Password, inspect 1Password Environment variable names, or work with the 1Password MCP server.
 license: MIT
-compatibility: Requires the 1Password desktop app (macOS, Windows, or Linux) with the MCP server enabled in Developer settings, and a client configured to run the local 1password-mcp MCP server. Local .env mounts are supported on macOS and Linux only.
+compatibility: Requires the 1Password desktop app (macOS, Windows, or Linux) with Integrate with MCP clients enabled under Settings > Developer, and a client configured to run the local 1password-mcp MCP server. Local .env mounts are supported on macOS and Linux only.
 ---
 
 # 1Password Environments
@@ -22,7 +22,7 @@ Do not use this skill for unrelated password-manager tasks, arbitrary local `.en
 
 This skill depends on the local 1Password MCP server. If its tools are not available in the current session, help the user finish setup instead of improvising:
 
-1. Install the 1Password desktop app and enable the MCP server in Settings > Developer. On business accounts, the setting is unavailable until an administrator enables the feature in the "Sharing & Permissions" policies section of the admin dashboard.
+1. Install the 1Password desktop app, go to **Settings > Developer**, and turn on **Integrate with MCP clients**.
 2. The desktop app installs the `1password-mcp` alias on the `PATH` (supported on macOS, Windows, and Linux).
 3. Configure the client to launch `1password-mcp` as a local MCP server. For Codex, add this to `~/.codex/config.toml`:
 
@@ -30,6 +30,11 @@ This skill depends on the local 1Password MCP server. If its tools are not avail
    [mcp_servers.1password]
    command = "1password-mcp"
    ```
+
+If **Integrate with MCP clients** is missing from **Settings > Developer**, update
+1Password. If the checkbox is still missing, the account may not have the
+`ai-local-mcp-server` feature flag. If it is disabled by an administrator, ask the
+administrator to check **Policies > Sharing and permissions > Agentic permissions > Local MCP server**.
 
 The 1Password desktop app asks the user to approve each client connection, and environment access can require additional approval.
 
