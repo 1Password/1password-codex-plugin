@@ -19,7 +19,10 @@ and Linux):
 }
 ```
 
-The MCP server requires the 1Password desktop app with the MCP server enabled under Settings > Developer. On business accounts, an administrator must first enable the feature in the "Sharing & Permissions" policies section of the admin dashboard. Each client connection and environment access can require approval in the desktop app.
+The MCP server requires the 1Password desktop app with **Integrate with MCP clients**
+turned on under **Settings > Developer**. If the checkbox is disabled by an
+administrator, ask your administrator to check **Policies > Sharing and permissions > Agentic permissions > Local MCP server**.
+Each client connection and environment access can require approval in the desktop app.
 
 ## Exposed Tools
 

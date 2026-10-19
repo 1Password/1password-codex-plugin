@@ -36,10 +36,11 @@ https://www.1password.dev/environments/mcp-codex-server
 ## Prerequisites
 
 - macOS, Windows, or Linux with the 1Password desktop app installed.
-- The MCP server enabled in the desktop app under Settings > Developer.
-- Access to a 1Password account with Developer Environments enabled. On
-  business accounts, an administrator must first enable the feature in the
-  "Sharing & Permissions" policies section of the admin dashboard.
+- **Integrate with MCP clients** turned on under **Settings > Developer** in the desktop app.
+- Access to a 1Password account with Developer Environments enabled.
+
+If **Integrate with MCP clients** is disabled by an administrator, ask your
+administrator to check **Policies > Sharing and permissions > Agentic permissions > Local MCP server**.
 
 The MCP server runs via the `1password-mcp` alias, which the 1Password
 desktop app installs on your `PATH`:
