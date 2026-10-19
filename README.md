@@ -32,6 +32,9 @@ https://www.1password.dev/environments/mcp-codex-server
   submission to the OpenAI plugin directory.
 - `scripts/validate_submission_zip.py` - Checks a built ZIP against OpenAI's
   submission rules.
+- `.github/workflows/prepare-release.yml` - Bumps the version, adds a changelog
+  section, and opens a release PR when a `release/vX.Y.Z` branch is pushed.
+- `CHANGELOG.md` - Release notes for each version.
 
 ## Prerequisites
 
@@ -73,6 +76,59 @@ The plugin exposes these 1Password MCP tools to Codex:
 - `append_variables`
 - `create_local_env_file`
 - `list_local_env_files`
+
+## Releasing
+
+Each release gets its own PR. Don't change the version number in feature PRs.
+
+1. Create a release branch from the latest `main`, named after the new version, and push it:
+
+   ```bash
+   git checkout main
+   git pull
+   git checkout -b release/v0.3.0
+   git push -u origin release/v0.3.0
+   ```
+
+   The **Prepare release** workflow commits a version bump in
+   [`plugins/1password/.codex-plugin/plugin.json`](plugins/1password/.codex-plugin/plugin.json)
+   and an empty `0.3.0` section in [`CHANGELOG.md`](CHANGELOG.md) to the
+   branch, then opens a `Release v0.3.0` PR.
+
+2. Wait for the `Release v0.3.0` PR to appear (usually under a minute; you can
+   watch the run in the **Actions** tab), then pull the workflow's commit:
+
+   ```bash
+   git pull
+   ```
+
+   If you pull before the workflow finishes, you won't get its commit, and your
+   next push will be rejected.
+
+3. Open `CHANGELOG.md` and write what changed under **Features**, **Fixes**, or
+   **Security**. Delete any heading you don't use. The new section includes a
+   comment listing the PRs merged since the last release, to help you remember
+   what went in. Delete the comment when you're done.
+
+4. Commit and push:
+
+   ```bash
+   git commit -am "Update changelog for v0.3.0"
+   git push
+   ```
+
+5. Merge the PR.
+
+6. Build the submission ZIP from the updated `main` (see
+   [Packaging for Submission](#packaging-for-submission)) and upload it to the
+   existing 1Password plugin at
+   [platform.openai.com/plugins](https://platform.openai.com/plugins) with
+   **Upload plugin to make changes**. After OpenAI approves it, open the
+   approved version and select **Publish plugin**.
+
+OpenAI doesn't read this repo, so merged changes reach the plugin directory
+only after a new ZIP is uploaded, reviewed, and published. Installs from GitHub
+use `main` directly.
 
 ## Packaging for Submission
 
