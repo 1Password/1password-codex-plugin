@@ -36,7 +36,7 @@
     "defaultPrompt": [
       "List my 1Password Environments",
       "Create a local .env mount here",
-      "Add a placeholder secret for my OpenAI API key"
+      "Add a placeholder variable for my OpenAI API key"
     ],
     "brandColor": "#0A84FF",
     "composerIcon": "./assets/icon.svg",
