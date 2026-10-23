@@ -30,8 +30,8 @@ Each client connection and environment access can require approval in the deskto
 - `list_environments`
 - `create_environment`
 - `rename_environment`
-- `list_secrets`
-- `append_secrets`
+- `list_variables`
+- `append_variables`
 - `create_local_env_file`
 - `list_local_env_files`
 
