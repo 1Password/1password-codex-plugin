@@ -20,7 +20,7 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "1Password",
+    "displayName": "1Password Developer Tools",
     "shortDescription": "Manage Developer Environments",
     "longDescription": "Connects Codex to the local 1Password MCP server and enables Codex to work with 1Password Developer Environments. Codex does not get access to the underlying secrets.",
     "developerName": "1Password",
