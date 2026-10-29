@@ -24,6 +24,11 @@ turned on under **Settings > Developer**. If the checkbox is disabled by an
 administrator, ask your administrator to check **Policies > Sharing and permissions > Agentic permissions > Local MCP server**.
 Each client connection and environment access can require approval in the desktop app.
 
+On macOS 27 Golden Gate, also allow the app you run Codex in to access 1Password
+app data: open **System Settings** > **Privacy & Security** > **Files & Folders**,
+select the app, and turn on the setting that starts with **"Data shared by 1Password"**.
+Then quit and reopen the app.
+
 ## Exposed Tools
 
 - `authenticate`
