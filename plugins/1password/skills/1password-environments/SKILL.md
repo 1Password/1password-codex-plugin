@@ -100,6 +100,7 @@ It also exposes these documentation resources:
 
 - If authentication or environment access fails, tell the user the 1Password desktop app may need approval, unlocking, or account access.
 - If the MCP tools are unavailable, follow the Requirements section above to help the user enable and configure the local MCP server.
+- If the MCP server fails to start on macOS 27 Golden Gate (for example, `Failed to start logger: Log cannot be written`), macOS is blocking the app Codex runs in from 1Password app data. Ask the user to open **System Settings > Privacy & Security > Files & Folders**, select that app (the Codex app, their terminal, or their editor), turn on the setting that starts with **"Data shared by 1Password"**, then quit and reopen the app. Full Disk Access is not needed.
 - Local `.env` mounts are documented for macOS and Linux only.
 
 ## Safety
