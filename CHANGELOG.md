@@ -4,23 +4,9 @@ All notable changes to this plugin are documented here. A new entry is added whe
 
 ## [0.3.1] - 2026-11-03
 
-### Features
--
-
 ### Fixes
--
-
-### Security
--
-
-<!--
-PRs merged since the last release (delete this comment when done):
-* feat(mcp): tag MCP connections made through the plugin (#12)
-* Add macOS 27 MCP permission step to README and reference (#13)
-* Bump step-security/harden-runner from 2.22.2 to 2.22.3 (#14)
-* Add Support URL to Manifest (#11)
-* Reapply changes for variables rename (#15)
--->
+- Added a setup step for macOS 27: allow the app you run Codex in to access 1Password app data under **System Settings > Privacy & Security > Files & Folders**. (#13)
+- Updated docs and the skill to say "secrets" instead of "variables", and to use the current tool names, `list_secrets` and `append_secrets`. (#15)
 
 ## [0.3.0] - 2026-10-23
 
