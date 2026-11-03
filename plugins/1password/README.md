@@ -35,8 +35,8 @@ Then quit and reopen the app.
 - `list_environments`
 - `create_environment`
 - `rename_environment`
-- `list_variables`
-- `append_variables`
+- `list_secrets`
+- `append_secrets`
 - `create_local_env_file`
 - `list_local_env_files`
 
